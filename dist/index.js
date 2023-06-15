@@ -10612,12 +10612,12 @@ async function main() {
     // http request to external API
     const response = await webrequest(url, headers);
 
-    const statusCode = response.status;
+    // const statusCode = response.status;
     const data = response.data;
     const outputObject = {
       url,
       time,
-      statusCode,
+      // statusCode,
       data,
     };
 
@@ -10625,7 +10625,7 @@ async function main() {
     console.log(consoleOutputJSON);
 
     if (statusCode >= 400) {
-      core.setFailed(`HTTP request failed with status code: ${statusCode}`);
+      core.setFailed(`HTTP request failed with status code:`);
     } else {
       const outputJSON = JSON.stringify(outputObject);
       core.setOutput("output", outputJSON);
