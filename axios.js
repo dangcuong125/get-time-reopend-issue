@@ -12,7 +12,7 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(async (config) => {
   try {
-    config.headers.Authorization = `token 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`;
+    config.headers.Authorization = `token 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`;
   } catch (e) {
     console.log(e);
   }
