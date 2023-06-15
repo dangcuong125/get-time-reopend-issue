@@ -10612,7 +10612,9 @@ async function main() {
     const statusCode = response?.status;
     const data = response?.data;
     console.log(data?.length);
-    const dataReOpended = [...data]?.find((item) => item?.event === "reopened");
+    const dataReOpended = [...data]
+      ?.reverse()
+      ?.find((item) => item?.event === "reopened");
     const timeReOpened = dataReOpended?.created_at;
 
     console.log("timeReOpened: ", timeReOpened);
