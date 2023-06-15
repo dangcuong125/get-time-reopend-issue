@@ -1,0 +1,19 @@
+name: "Web Request Action"
+description: "Send Web Request"
+author: "Satak"
+branding:
+  icon: arrow-right-circle
+  color: gray-dark
+inputs:
+  url:
+    description: "Web request URL endpoint"
+    required: true
+  headers:
+    description: Web request headers in JSON format
+    required: false
+outputs:
+  output:
+    description: "data output from the web request"
+runs:
+  using: "node16"
+  main: "dist/index.js"
