@@ -15,7 +15,7 @@ async function main() {
     // http request to external API
     const response = await webrequest(url, headers);
 
-    // const statusCode = response.status;
+    const statusCode = response?.status;
     const data = response?.data;
     const outputObject = {
       url,
