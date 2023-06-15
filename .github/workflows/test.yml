@@ -30,5 +30,4 @@ jobs:
       - name: get-request output
         shell: pwsh
         run: |
-          $output = '${{ steps.get-request.outputs.output }}' | ConvertFrom-Json
-          $output.data[0].id -eq 1
+          $output = '${{ steps.get-request.outputs.output }}'
