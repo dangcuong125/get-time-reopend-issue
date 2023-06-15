@@ -2,14 +2,14 @@
 
 > Supports get time issue reopened.
 
-[![Test Status](https://github.com/satak/webrequest-action/workflows/Test/badge.svg)](https://github.com/dangcuong125/get-time-reopend-issue/actions)
+[![Test Status](https://github.com/satak/webrequest-action/workflows/Test/badge.svg)](https://github.com/dangcuong125/get-time-reopened-issue/actions)
 
 ## Usage
 
 ### `GET` request
 
 ```yaml
-uses: dangcuong125/get-time-reopend-issue@main
+uses: dangcuong125/get-time-reopened-issue@main
 with:
   url: https://my-json-server.typicode.com/typicode/demo/posts
   headers: '{"Authorization": "token ****"}'

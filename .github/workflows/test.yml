@@ -5,7 +5,7 @@ env:
 jobs:
   webrequest_test:
     runs-on: ubuntu-latest
-    name: Test POST and GET web requests
+    name: Get Time Issue Reopened
     steps:
       - name: Checkout
         uses: actions/checkout@v3

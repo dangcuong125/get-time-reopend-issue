@@ -1,6 +1,6 @@
-name: "Web Request Action"
-description: "Send Web Request"
-author: "Satak"
+name: "Get Time Issue Reopened"
+description: "Get Time Issue Reopened"
+author: "dangcuong125"
 branding:
   icon: arrow-right-circle
   color: gray-dark
