@@ -17,21 +17,15 @@ async function main() {
 
     const statusCode = response?.status;
     const data = response?.data;
-    const outputObject = {
-      url,
-      time,
-      // statusCode,
-      data,
-    };
+    const dataReOpended = data?.findLast((item) => item?.event === "reopened");
+    const timeReOpened = dataReOpended?.created_at;
 
-    const consoleOutputJSON = JSON.stringify(outputObject, undefined, 2);
-    console.log(consoleOutputJSON);
+    console.log("timeReOpened: ", timeReOpened);
 
     if (statusCode >= 400) {
       core.setFailed(`HTTP request failed with status code:`);
     } else {
-      const outputJSON = JSON.stringify(outputObject);
-      core.setOutput("output", outputJSON);
+      core.setOutput("output", timeReOpened);
     }
   } catch (error) {
     core.setFailed(error.message);
