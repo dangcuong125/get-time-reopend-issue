@@ -9,5 +9,6 @@ const headers = {
 test("webrequest get", async () => {
   expect.assertions(2);
   const res = await webrequest(url, headers);
-  console.log(res);
+
+  expect(res.status).toBe(200);
 });
