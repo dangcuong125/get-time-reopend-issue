@@ -26,7 +26,7 @@ jobs:
         uses: dangcuong125/get-time-reopend-issue@main
         with:
           url: https://api.github.com/repos/bilisoftware/traphaco-manage/issues/133/timeline
-          headers: '{"Authorization": "token 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"}'
+          headers: '{"Authorization": "token ${{ secrets.TOKEN }}"}'
       - name: get-request output
         shell: pwsh
         run: |
