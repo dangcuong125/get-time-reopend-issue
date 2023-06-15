@@ -1,17 +1,8 @@
-const axios = require("axios");
+const { default: axiosClient } = require("./axios");
 
 async function webrequest(url, headers) {
-  let config = {
-    method: "get",
-    maxBodyLength: Infinity,
-    url: "https://api.github.com/repos/bilisoftware/traphaco-manage/issues/133/timeline",
-    headers: {
-      Authorization: "token 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",
-    },
-  };
-
   try {
-    const res = await axios.request(config);
+    const res = await axiosClient.get("/");
     return res;
   } catch (error) {
     console.error(error);
