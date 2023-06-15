@@ -10,6 +10,7 @@ async function main() {
 
     // current time
     const time = new Date().toTimeString();
+    console.log(1);
 
     // http request to external API
     const response = await webrequest(url, headers);
