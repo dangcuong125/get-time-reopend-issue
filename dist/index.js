@@ -6157,23 +6157,17 @@ exports["default"] = _default;
 const axios = __nccwpck_require__(9109);
 
 async function webrequest(url, headers) {
-  let config = {
-    method: "get",
-    maxBodyLength: Infinity,
-    url: "https://api.github.com/repos/bilisoftware/traphaco-manage/issues/133/timeline",
+  const config = {
     headers: {
-      Authorization: "token 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",
+      Authorization: "token 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",
     },
   };
-
-  axios
-    .request(config)
-    .then((response) => {
-      return response;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    const response = await axios.get(url, config);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 module.exports = webrequest;
@@ -10613,7 +10607,7 @@ async function main() {
     const response = await webrequest(url, headers);
 
     // const statusCode = response.status;
-    const data = response.data;
+    const data = response?.data;
     const outputObject = {
       url,
       time,
