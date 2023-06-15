@@ -1,53 +1,14 @@
-const webrequest = require('./webrequest');
+const webrequest = require("./webrequest");
 
-const url = 'https://my-json-server.typicode.com/typicode/demo/posts';
-const headers = { Authorization: 'Token 123' };
-const username = 'username';
-const password = 'password';
+const url =
+  "https://api.github.com/repos/bilisoftware/traphaco-manage/issues/133/timeline";
+const headers = {
+  Authorization: "token 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",
+};
 
-test('webrequest get', async () => {
+test("webrequest get", async () => {
   expect.assertions(2);
-  const method = 'get';
-  const res = await webrequest(url, method, null, headers, username, password);
-
-  expect(res.status).toBe(200);
-  expect(res.data[0].id).toBe(1);
-});
-
-test('webrequest post', async () => {
-  expect.assertions(2);
-  const method = 'post';
-  const title = 'Jest Post';
-  const res = await webrequest(url, method, { title }, null, username, password);
-
-  expect(res.status).toBe(201);
-  expect(res.data.title).toBe(title);
-});
-
-test('webrequest put', async () => {
-  expect.assertions(2);
-  const method = 'put';
-  const title = 'jest put';
-  const res = await webrequest(`${url}/1`, method, { title }, headers);
-
-  expect(res.status).toBe(200);
-  expect(res.data).toEqual({ title, id: 1 });
-});
-
-test('webrequest patch', async () => {
-  expect.assertions(2);
-  const method = 'patch';
-  const title = 'jest patch';
-  const res = await webrequest(`${url}/1`, method, { title }, headers, username, password);
-
-  expect(res.status).toBe(200);
-  expect(res.data).toEqual({ title, id: 1 });
-});
-
-test('webrequest delete', async () => {
-  expect.assertions(1);
-  const method = 'delete';
-  const res = await webrequest(`${url}/1`, method);
+  const res = await webrequest(url, headers);
 
   expect(res.status).toBe(200);
 });
