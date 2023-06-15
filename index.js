@@ -16,7 +16,7 @@ async function main() {
     const response = await webrequest(url, headers);
 
     // const statusCode = response.status;
-    const data = response.data;
+    const data = response?.data;
     const outputObject = {
       url,
       time,

@@ -3,7 +3,7 @@ const axios = require("axios");
 async function webrequest(url, headers) {
   const config = {
     headers: {
-      Authorization: "token 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",
+      Authorization: "token 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",
     },
   };
   try {
