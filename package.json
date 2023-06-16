@@ -19,7 +19,8 @@
   "homepage": "https://github.com/dangcuong125/get-time-reopened-issue#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "dayjs": "^1.11.8"
   },
   "devDependencies": {
     "jest": "^29.5.0"

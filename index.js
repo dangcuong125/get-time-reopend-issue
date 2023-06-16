@@ -1,5 +1,13 @@
 const core = require("@actions/core");
 const webrequest = require("./webrequest");
+const dayjs = require("dayjs");
+
+const utc = require("dayjs/plugin/utc");
+const timezone = require("dayjs/plugin/timezone");
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault("Asia/Ho_Chi_Minh");
 
 async function main() {
   try {
@@ -18,17 +26,43 @@ async function main() {
     const statusCode = response?.status;
     const data = response?.data;
     console.log(data?.length);
-    const dataReOpended = [...data]
-      ?.reverse()
-      ?.find((item) => item?.event === "reopened");
-    const timeReOpened = dataReOpended?.created_at;
+    // const dataReOpended = [...data]
+    //   ?.reverse()
+    //   ?.find((item) => item?.event === "reopened");
+    // const timeReOpened = dataReOpended?.created_at;
 
-    console.log("timeReOpened: ", timeReOpened);
+    const close = [...data]?.filter((item) => item.event === "closed");
+
+    const reopened = [...data]?.filter(
+      (item) => item.event === "reopened" || item.event === "labeled"
+    );
+
+    const caculateWorkHour = (start, end) => {
+      if (
+        dayjs.tz(start).get("date") === dayjs.tz(end).get("date") &&
+        dayjs.tz(start).get("month") === dayjs.tz(end).get("month")
+      ) {
+        return dayjs.tz(end).diff(dayjs.tz(start), "millisecond");
+      } else {
+        const date = dayjs.tz(end).get("date") - dayjs.tz(start).get("date");
+        return (
+          dayjs.tz(end).diff(dayjs.tz(start), "millisecond") -
+          date * 15 * 60 * 1000 * 60
+        );
+      }
+    };
+    const hours = close.reduce((acc, item, index) => {
+      return (
+        acc + caculateWorkHour(reopened[index]?.created_at, item?.created_at)
+      );
+    }, 0);
+
+    const workHours = Math.round((hours / (60 * 60 * 1000)) * 100) / 100;
 
     if (statusCode >= 400) {
       core.setFailed(`HTTP request failed with status code:`);
     } else {
-      core.setOutput("output", timeReOpened);
+      core.setOutput("output", workHours);
     }
   } catch (error) {
     core.setFailed(error.message);
